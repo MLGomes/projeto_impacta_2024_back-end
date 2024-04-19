@@ -102,6 +102,7 @@ class ProductController {
         }
     }
 
+    
     async createcargo(req, res) {
         try {
           const { cargo } = req.body;
@@ -127,6 +128,7 @@ class ProductController {
         }
       }      
 
+      
       async allcargos(req, res){
         const listCargos = await CargoModel.find();
 
