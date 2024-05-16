@@ -56,18 +56,17 @@ class ProductController {
 
     }
 
+    // Software Product - Atividade contnua 03
     async update(req, res){
         try {
           const { id } = req.params;
-          // Extrair os campos que podem ser atualizados
+          
           const { name, email, cpf, cargo, status } = req.body;
       
-          // Verificar se pelo menos um campo foi fornecido para atualização
           if (!name && !email && !cpf && !status && !cargo) {
             return res.status(400).json({ message: "Nenhum dado fornecido para atualização" });
           }
       
-          // Montar objeto com os campos a serem atualizados
           const updatedFields = {};
           if (name) updatedFields.name = name;
           if (email) updatedFields.email = email;
@@ -75,7 +74,6 @@ class ProductController {
           if (cargo) updatedFields.cargo = cargo;
           if (status) updatedFields.status = status;
       
-          // Atualizar o usuário no banco de dados
           await UserModel.findByIdAndUpdate(id, updatedFields);
       
           return res.status(200).json({ message: "Usuário atualizado com sucesso!" });
