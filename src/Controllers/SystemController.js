@@ -132,28 +132,6 @@ class ProductController {
 
         return res.status(200).json(listCargos);
     }
-
-    async search(req, res) {
-      try {
-        const { query } = req.body; // Assumindo que o corpo da requisição contém o critério de pesquisa
-        
-        // Realizar a pesquisa utilizando uma expressão regular para buscar em vários campos
-        const users = await UserModel.find({
-          $or: [
-            { name: { $regex: query, $options: 'i' } }, // Buscar por nome (case-insensitive)
-            { email: { $regex: query, $options: 'i' } }, // Buscar por email (case-insensitive)
-            { cpf: { $regex: query, $options: 'i' } }, // Buscar por CPF (case-insensitive)
-            { status: { $regex: query, $options: 'i' } }, // Buscar por status (case-insensitive)
-            { cargo: { $regex: query, $options: 'i' } } // Buscar por cargo (case-insensitive)
-          ]
-        });
-  
-        res.status(200).json(users);
-      } catch (error) {
-        console.error('Erro ao pesquisar usuários:', error);
-        res.status(500).json({ message: 'Erro ao pesquisar usuários' });
-      }
-    }
 }
 
 module.exports = new ProductController;

@@ -14,6 +14,5 @@ routes.put('/updateuser/:id', ProductController.update);
 routes.delete('/delete/:id', ProductController.delete);
 routes.post('/createcargo', ProductController.createcargo);
 routes.get('/listcargos', ProductController.allcargos);
-routes.post('/search', ProductController.search);
 
 module.exports = routes;
